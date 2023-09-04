@@ -1,0 +1,19 @@
+services:
+  template-connector:
+    image: xml-json-image:latest
+    container_name: XmlJsonConnector
+
+    environment:
+      - ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS=zeebe:26500
+      - ZEEBE_CLIENT_SECURITY_PLAINTEXT=true
+      - CAMUNDA_CONNECTOR_POLLING_ENABLED=false
+      - CAMUNDA_CONNECTOR_WEBHOOK_ENABLED=false
+      - SPRING_MAIN_WEB-APPLICATION-TYPE=none
+      - OPERATE_CLIENT_ENABLED=false
+  
+    networks:
+      - camunda-platform_camunda-platform
+
+networks:
+  camunda-platform_camunda-platform:
+    external: true
